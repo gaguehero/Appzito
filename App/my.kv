@@ -1,0 +1,112 @@
+<Logado>
+    name: "logado"
+    GridLayout:
+        cols: 2
+        Button:
+            text: "Abre Porta"
+            on_release:
+                root.btn()
+
+        Button:
+            text: "Deslogar"
+            on_release:
+                app.root.current = "tela"
+                root.manager.transition.direction = "right"
+
+
+<TelaDeLog>
+    name: "tela"
+
+    email: user
+    password: passw
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:2
+            Label:
+                text: "Email "
+            TextInput:
+                id: user
+                multiline: False
+            Label:
+                text: "Password: "
+            TextInput:
+                id: passw
+                multiline: False
+        Button:
+            text: "Entrar"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.ValidaLog()
+        Button:
+            text: "Criar Conta"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.criaLog()
+
+<NovaConta>
+    name: "cria"
+    namee: namee
+    email: email
+    password: passw
+
+    GridLayout:
+        cols:1
+        Button:
+            text: "Jah tem conta? Acesse"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.voltar()
+        GridLayout:
+            cols:2
+            Label:
+                text:"Nome: "
+            TextInput:
+                id: namee
+                multiline: False
+            Label:
+                text: "Email: "
+            TextInput:
+                id: email
+                multiline: False
+            Label:
+                text: "Password: "
+            TextInput:
+                id: passw
+                multiline: False
+        Button:
+            text: "Criar"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.salvar()
+
+<AtendeChamada>
+    GridLayout:
+        cols: 1
+        
+        GridLayout:
+            cols: 2
+            Button:
+                text: "Liberar"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.liberar()
+            Button:
+                text: "Negar"
+                on_release:
+                    root.manager.transition.direction = "right"
+                    root.negar()
+<Chamada>:
+    Label:
+        text: "Alerta na Portaria"
+        size_hint: 0.6,0.2
+        pos_hint: {"x":0.2,"top":1}
+    Button:
+        text: "Atender"
+        size_hint:0.8,0.2
+        pos_hint:{"x":0.1,"y":0.1}
+        on_release:
+            app.root.current = "atende"
+
+
